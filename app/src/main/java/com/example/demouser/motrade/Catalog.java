@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class Catalog {
 
     private ArrayList<Listing> masterList;
+    private ArrayList<String> names;
     private HashMap<Listing.Category, ArrayList<Listing>> categoryMap;
 
     public Catalog() {
@@ -29,6 +30,7 @@ public class Catalog {
         Listing newListing = new Listing(name, description, sellerName, category);
         //add to list
         masterList.add(newListing);
+        names.add(name);
         //add to map
         if(categoryMap.containsKey(category)) {
             //add to list at key
@@ -63,6 +65,14 @@ public class Catalog {
     }
 
     /**
+     * getter for master list
+     * @return masterList
+     */
+    public ArrayList<String> getNamesList() {
+        return names;
+    }
+
+    /**
      * getter for individual category list
      * @param category
      * @return list at category
@@ -71,3 +81,4 @@ public class Catalog {
         return categoryMap.get(category);
     }
 }
+
