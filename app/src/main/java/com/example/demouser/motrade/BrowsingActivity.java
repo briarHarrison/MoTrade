@@ -1,55 +1,39 @@
 package com.example.demouser.motrade;
 
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.ArrayAdapter;
+/**
+ * Created by demouser on 1/16/18.
+ */
 
 public class BrowsingActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_browsing);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_main);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        ListView listView1 = (ListView) findViewById(R.id.listView1);
 
-        CoordinatorLayout layout = (CoordinatorLayout) findViewById(R.id.mainLayout);
-        layout.addView(new ListingView(this, null));
-    }
+        //makes an array of hardcoded listings.
+        //Eventually, we will delete this
+        Listing[] items = {
+                new Listing("name1", "description 1", "sellerName 1", Listing.Category.SERVICE),
+                new Listing("name2", "description 2", "sellerName 2", Listing.Category.SERVICE),
+                new Listing("name3", "description 3", "sellerName 3", Listing.Category.SERVICE),
+                new Listing("name4", "description 4", "sellerName 4", Listing.Category.SERVICE),
+                new Listing("name5", "description 5", "sellerName 5", Listing.Category.SERVICE)
+        };
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_browsing, menu);
-        return true;
-    }
+        //An adapter takes the array (items) and uses it to format each line of the ListView
+        //simple_list_item_1 is a premade andoid xml document to describe the default view of a
+        //string in a ListView
+        ArrayAdapter<Listing> adapter = new ArrayAdapter<Listing>(this,
+                android.R.layout.simple_list_item_1, items);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        //set listView's adapter
+        listView1.setAdapter(adapter);
     }
 }

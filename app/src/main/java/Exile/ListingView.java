@@ -1,4 +1,4 @@
-package com.example.demouser.motrade;
+package Exile;
 
 
 import android.content.Context;
@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.ViewGroup.LayoutParams;
+
+import com.example.demouser.motrade.Listing;
+import com.example.demouser.motrade.R;
 
 /**
  * Created by demouser on 1/16/18.
