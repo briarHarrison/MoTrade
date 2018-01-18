@@ -33,7 +33,7 @@ public class ListingView extends RelativeLayout {
 
         //create and add image
         productImage = new ImageView(context);
-        productImage.setImageResource(R.drawable.cheese);
+        productImage.setImageResource(R.drawable.puppy);
         addView(productImage);
         //create and add description
         productDescription = new TextView(context);

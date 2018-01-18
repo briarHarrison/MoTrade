@@ -20,13 +20,13 @@ public class Catalog_activity {
     };
 
     public void hardCode(){ // hardcode some products
-        addListing(new Listing("name 1", "description 1", "sellerName 1", Listing.Category.GOOD));
-        addListing(new Listing("name 2", "description 2", "sellerName 2", Listing.Category.SERVICE));
-        addListing(new Listing("name 3", "description 3", "sellerName 3", Listing.Category.GOOD));
-        addListing(new Listing("name 4", "description 4", "sellerName 4", Listing.Category.SERVICE));
-        addListing(new Listing("name 5", "description 5", "sellerName 5", Listing.Category.GOOD));
-        addListing(new Listing("name 6", "description 6", "sellerName 6", Listing.Category.SERVICE));
-        addListing(new Listing("name 7", "description 7", "sellerName 7", Listing.Category.GOOD));
+//        addListing(new Listing("name 1", "description 1", "sellerName 1", Listing.Category.GOOD));
+//        addListing(new Listing("name 2", "description 2", "sellerName 2", Listing.Category.SERVICE));
+//        addListing(new Listing("name 3", "description 3", "sellerName 3", Listing.Category.GOOD));
+//        addListing(new Listing("name 4", "description 4", "sellerName 4", Listing.Category.SERVICE));
+//        addListing(new Listing("name 5", "description 5", "sellerName 5", Listing.Category.GOOD));
+//        addListing(new Listing("name 6", "description 6", "sellerName 6", Listing.Category.SERVICE));
+//        addListing(new Listing("name 7", "description 7", "sellerName 7", Listing.Category.GOOD));
     }
 
     public void addListing(Listing listing) {
