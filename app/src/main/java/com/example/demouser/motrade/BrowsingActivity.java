@@ -1,9 +1,12 @@
 package com.example.demouser.motrade;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ArrayAdapter;
 /**
  * Created by demouser on 1/16/18.
  */
@@ -15,7 +18,7 @@ public class BrowsingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView1 = (ListView) findViewById(R.id.listView1);
+        final ListView listView1 = (ListView) findViewById(R.id.listView1);
 
         Listing newListing =  new Listing("name1", "description 1", "sellerName 1", Listing.Category.SERVICE);
         newListing.addPicture(R.drawable.cheese, true);
@@ -41,5 +44,18 @@ public class BrowsingActivity extends AppCompatActivity {
 
         //set listView's adapter
         listView1.setAdapter(adapter);
+
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                int itemPosition  = position;
+                String itemValue = (String) listView1.getItemAtPosition(position);
+            }
+        });
+
+    }
+    public void createIntent() {
+        Intent intent = new Intent(this, ListingDetailView.class);
+        startActivity(intent);
     }
 }
