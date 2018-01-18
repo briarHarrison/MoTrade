@@ -7,6 +7,9 @@ import android.view.View;
 
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import java.util.ArrayList;
+
 /**
  * Created by demouser on 1/16/18.
  */
@@ -18,28 +21,28 @@ public class BrowsingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ListView listView1 = (ListView) findViewById(R.id.listView1);
-
+        // create catalog and add hardcoded entries
+        Catalog catalog = new Catalog();
         Listing newListing =  new Listing("name1", "description 1", "sellerName 1", Listing.Category.SERVICE);
         newListing.addPicture(R.drawable.cheese, true);
-        //makes an array of hardcoded listings.
-        //Eventually, we will delete this
-        Listing[] items = {
-                newListing
-                //new Listing("name1", "description 1", "sellerName 1", Listing.Category.SERVICE),
-                //new Listing("name2", "description 2", "sellerName 2", Listing.Category.SERVICE),
-                //new Listing("name3", "description 3", "sellerName 3", Listing.Category.SERVICE),
-                //new Listing("name4", "description 4", "sellerName 4", Listing.Category.SERVICE),
-                //new Listing("name5", "description 5", "sellerName 5", Listing.Category.SERVICE)
-        };
+        Listing newListing2 =  new Listing("name2", "description 2", "sellerName 2", Listing.Category.SERVICE);
+        newListing2.addPicture(R.drawable.cheese, true);
+        Listing newListing3 =  new Listing("name3", "description 3", "sellerName 3", Listing.Category.SERVICE);
+        newListing3.addPicture(R.drawable.cheese, true);
+        Listing newListing4 =  new Listing("name4", "description 4", "sellerName 4", Listing.Category.SERVICE);
+        newListing4.addPicture(R.drawable.cheese, true);
+        catalog.addListing(newListing);
+        catalog.addListing(newListing2);
+        catalog.addListing(newListing3);
+        catalog.addListing(newListing4);
 
-        //An adapter takes the array (items) and uses it to format each line of the ListView
-        //simple_list_item_1 is a premade andoid xml document to describe the default view of a
-        //string in a ListView
-        /*
-        ArrayAdapter<Listing> adapter = new ArrayAdapter<Listing>(this,
-                android.R.layout.simple_list_item_1, items); */
+        //make listview
+        final ListView listView1 = (ListView) findViewById(R.id.listView1);
 
+        //get list from catalog
+        ArrayList<Listing> items = catalog.getMasterList();
+
+        //make adapter, passing in list from catlog
         ListViewAdapter adapter = new ListViewAdapter(this, R.layout.list_item, items);
 
         //set listView's adapter
@@ -48,14 +51,15 @@ public class BrowsingActivity extends AppCompatActivity {
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                int itemPosition  = position;
-                String itemValue = (String) listView1.getItemAtPosition(position);
+                Listing itemValue = (Listing) listView1.getItemAtPosition(position);
+                createIntent(itemValue);
             }
         });
 
     }
-    public void createIntent() {
-        Intent intent = new Intent(this, ListingDetailView.class);
+    public void createIntent(Listing listing) {
+        Intent intent = new Intent(this, ItemViewActivity.class);
+        intent.putExtra("name", listing.name);
         startActivity(intent);
     }
 }
