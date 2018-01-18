@@ -10,7 +10,6 @@ import java.util.HashMap;
 public class Catalog {
 
     private ArrayList<Listing> masterList;
-    private ArrayList<String> names;
     private HashMap<Listing.Category, ArrayList<Listing>> categoryMap;
 
     public Catalog() {
@@ -20,27 +19,22 @@ public class Catalog {
 
     /**
      * create a new listing and add to list
-     * @param name
-     * @param description
-     * @param sellerName
-     * @param category
+     * @param newListing
      */
-    public void addListing(String name, String description, String sellerName, Listing.Category category) {
+    public void addListing(Listing newListing) {
 
-        Listing newListing = new Listing(name, description, sellerName, category);
         //add to list
         masterList.add(newListing);
-        names.add(name);
         //add to map
-        if(categoryMap.containsKey(category)) {
+        if(categoryMap.containsKey(newListing.getCategory())) {
             //add to list at key
-            ArrayList<Listing> list = categoryMap.get(category);
+            ArrayList<Listing> list = categoryMap.get(newListing.getCategory());
             list.add(newListing);
         } else {
             //make new list with listing and add to map
             ArrayList<Listing> newList = new ArrayList<>();
             newList.add(newListing);
-            categoryMap.put(category, newList);
+            categoryMap.put(newListing.getCategory(), newList);
         }
     }
 
@@ -62,14 +56,6 @@ public class Catalog {
      */
     public ArrayList<Listing> getMasterList() {
         return masterList;
-    }
-
-    /**
-     * getter for master list
-     * @return masterList
-     */
-    public ArrayList<String> getNamesList() {
-        return names;
     }
 
     /**

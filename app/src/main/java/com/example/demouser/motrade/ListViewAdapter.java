@@ -20,7 +20,7 @@ public class ListViewAdapter extends ArrayAdapter<Listing> {
     Context context;
 
     public ListViewAdapter(Context context, int resourceId,
-                                 Listing[] items) {
+                           ArrayList<Listing> items) {
         super(context, resourceId, items);
         this.context = context;
     }
