@@ -17,21 +17,27 @@ public class BrowsingActivity extends AppCompatActivity {
 
         ListView listView1 = (ListView) findViewById(R.id.listView1);
 
+        Listing newListing =  new Listing("name1", "description 1", "sellerName 1", Listing.Category.SERVICE);
+        newListing.addPicture(R.drawable.cheese, true);
         //makes an array of hardcoded listings.
         //Eventually, we will delete this
         Listing[] items = {
-                new Listing("name1", "description 1", "sellerName 1", Listing.Category.SERVICE),
-                new Listing("name2", "description 2", "sellerName 2", Listing.Category.SERVICE),
-                new Listing("name3", "description 3", "sellerName 3", Listing.Category.SERVICE),
-                new Listing("name4", "description 4", "sellerName 4", Listing.Category.SERVICE),
-                new Listing("name5", "description 5", "sellerName 5", Listing.Category.SERVICE)
+                newListing
+                //new Listing("name1", "description 1", "sellerName 1", Listing.Category.SERVICE),
+                //new Listing("name2", "description 2", "sellerName 2", Listing.Category.SERVICE),
+                //new Listing("name3", "description 3", "sellerName 3", Listing.Category.SERVICE),
+                //new Listing("name4", "description 4", "sellerName 4", Listing.Category.SERVICE),
+                //new Listing("name5", "description 5", "sellerName 5", Listing.Category.SERVICE)
         };
 
         //An adapter takes the array (items) and uses it to format each line of the ListView
         //simple_list_item_1 is a premade andoid xml document to describe the default view of a
         //string in a ListView
+        /*
         ArrayAdapter<Listing> adapter = new ArrayAdapter<Listing>(this,
-                android.R.layout.simple_list_item_1, items);
+                android.R.layout.simple_list_item_1, items); */
+
+        ListViewAdapter adapter = new ListViewAdapter(this, R.layout.list_item, items);
 
         //set listView's adapter
         listView1.setAdapter(adapter);
