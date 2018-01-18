@@ -27,14 +27,14 @@ public class BrowsingActivity extends AppCompatActivity {
 
         // create catalog and add hardcoded entries
         Catalog catalog = new Catalog();
-        Listing newListing =  new Listing("name1", "description 1", "sellerName 1", Listing.Category.SERVICE);
-        newListing.addPicture(R.drawable.cheese, true);
-        Listing newListing2 =  new Listing("name2", "description 2", "sellerName 2", Listing.Category.SERVICE);
-        newListing2.addPicture(R.drawable.cheese, true);
-        Listing newListing3 =  new Listing("name3", "description 3", "sellerName 3", Listing.Category.SERVICE);
-        newListing3.addPicture(R.drawable.cheese, true);
-        Listing newListing4 =  new Listing("name4", "description 4", "sellerName 4", Listing.Category.SERVICE);
-        newListing4.addPicture(R.drawable.cheese, true);
+        Listing newListing =  new Listing("name1",  "$1837","description 1", "sellerName 1", Listing.Category.SERVICE);
+        newListing.addPicture(R.drawable.puppy, true);
+        Listing newListing2 =  new Listing("name2",  "$1837","description 2", "sellerName 2", Listing.Category.SERVICE);
+        newListing2.addPicture(R.drawable.puppy, true);
+        Listing newListing3 =  new Listing("name3",  "$1837","description 3", "sellerName 3", Listing.Category.SERVICE);
+        newListing3.addPicture(R.drawable.puppy, true);
+        Listing newListing4 =  new Listing("name4",  "$1837","description 4", "sellerName 4", Listing.Category.SERVICE);
+        newListing4.addPicture(R.drawable.puppy, true);
         catalog.addListing(newListing);
         catalog.addListing(newListing2);
         catalog.addListing(newListing3);

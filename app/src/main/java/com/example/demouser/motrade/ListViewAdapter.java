@@ -29,6 +29,7 @@ public class ListViewAdapter extends ArrayAdapter<Listing> {
     private class ViewHolder {
         ImageView imageView;
         TextView txtTitle;
+        TextView txtPrice;
         TextView txtDesc;
     }
 
@@ -43,6 +44,7 @@ public class ListViewAdapter extends ArrayAdapter<Listing> {
             holder = new ViewHolder();
             holder.txtDesc = (TextView) convertView.findViewById(R.id.desc);
             holder.txtTitle = (TextView) convertView.findViewById(R.id.title);
+            holder.txtPrice = (TextView) convertView.findViewById(R.id.price);
             holder.imageView = (ImageView) convertView.findViewById(R.id.icon);
             convertView.setTag(holder);
         } else
@@ -50,6 +52,7 @@ public class ListViewAdapter extends ArrayAdapter<Listing> {
 
         holder.txtDesc.setText(listing.getDescription());
         holder.txtTitle.setText(listing.getName());
+        holder.txtPrice.setText(listing.getPrice());
         holder.imageView.setImageResource(listing.getMainPicture());
 
         return convertView;
