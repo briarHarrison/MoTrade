@@ -27,6 +27,11 @@ public class ItemViewActivity extends AppCompatActivity {
         String name = intent.getStringExtra("name");
         TextView textName = (TextView) findViewById(R.id.itemNameView);
         textName.setText(name);
+        String desc = intent.getStringExtra("disc");
+        TextView textDicc = (TextView) findViewById(R.id.itemDescriptionView);
+        textDicc.setText(desc);
+
+
 
         String desc = intent.getStringExtra("desc");
         TextView textDesc = (TextView) findViewById(R.id.itemDescriptionView);
