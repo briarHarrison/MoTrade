@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Listing {
 
     protected String name;
+    protected String price;
     protected String description;
     protected ArrayList<Integer> pictureFiles;
     protected String sellerName;
@@ -18,8 +19,9 @@ public class Listing {
         GOOD, SERVICE;
     }
 
-    public Listing(String name, String description, String sellerName, Category category) {
+    public Listing(String name, String price, String description, String sellerName, Category category) {
         this.name = name;
+        this.price = price;
         this.description = description;
         this.sellerName = sellerName;
         this.category = category;
@@ -32,6 +34,14 @@ public class Listing {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public String getDescription() {
@@ -87,10 +97,11 @@ public class Listing {
     public String toString() {
         return "Listing{" +
                 "name='" + name + '\'' +
+                ", price='" + price + '\'' +
                 ", description='" + description + '\'' +
                 ", pictureFiles=" + pictureFiles +
                 ", sellerName='" + sellerName + '\'' +
-                ", category='" + category + '\'' +
+                ", category=" + category +
                 '}';
     }
 
@@ -102,6 +113,7 @@ public class Listing {
         Listing listing = (Listing) o;
 
         if (name != null ? !name.equals(listing.name) : listing.name != null) return false;
+        if (price != null ? !price.equals(listing.price) : listing.price != null) return false;
         if (description != null ? !description.equals(listing.description) : listing.description != null)
             return false;
         if (pictureFiles != null ? !pictureFiles.equals(listing.pictureFiles) : listing.pictureFiles != null)
@@ -114,22 +126,23 @@ public class Listing {
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (pictureFiles != null ? pictureFiles.hashCode() : 0);
         result = 31 * result + (sellerName != null ? sellerName.hashCode() : 0);
-        result = 31 * result + category.hashCode();
+        result = 31 * result + (category != null ? category.hashCode() : 0);
         return result;
     }
 
     public static void main(String[] args) {
 
-        Listing testListing = new Listing("bagel",
+        Listing testListing = new Listing("bagel", "$1837",
                 "stolen from Prospect",
                 "Jorge",
                 Category.GOOD);
         System.out.println(testListing.toString());
 
-        Listing testListing2 = new Listing("bagel",
+        Listing testListing2 = new Listing("bagel", "$1837",
                 "stolen from Prospect",
                 "Jorge",
                 Category.GOOD);
