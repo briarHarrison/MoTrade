@@ -61,9 +61,13 @@ public class BrowsingActivity extends AppCompatActivity {
         });
 
     }
+    // Create the intent for 2nd activity
     public void createIntent(Listing listing) {
         Intent intent = new Intent(this, ItemViewActivity.class);
-        intent.putExtra("name", listing.name);
+        intent.putExtra("name", listing.getName());
+        intent.putExtra("price", listing.getPrice());
+        intent.putExtra("desc", listing.getDescription());
+        intent.putExtra("picture", listing.getMainPicture());
         startActivity(intent);
     }
 }
