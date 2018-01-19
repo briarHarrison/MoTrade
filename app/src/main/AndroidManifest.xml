@@ -18,6 +18,10 @@
         <activity
             android:name=".ItemViewActivity"
             android:label="@string/title_activity_item_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddItemActivity"
+            android:label="@string/title_activity_add_item"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

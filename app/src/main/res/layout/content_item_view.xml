@@ -71,17 +71,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
+                    android:scrollHorizontally="false"
+                    android:scrollbars="vertical"
                     android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condimentum maximus orci, id ullamcorper neque tempus quis. In massa erat, ultrices ut justo et, euismod mollis nibh. Nullam cursus, nulla sed condimentum bibendum, eros ipsum commodo enim, at dignissim turpis tellus sit amet lectus. Fusce tincidunt libero non rhoncus cursus. Fusce faucibus odio eu velit ullamcorper, sit amet gravida neque gravida. Curabitur diam diam, iaculis at lacinia non, posuere ac urna. Aenean eu justo eros. In et lorem turpis. Curabitur sapien velit, vehicula vel metus ac, consequat scelerisque metus. Sed faucibus volutpat scelerisque. Proin consectetur euismod metus et sodales. Nam consequat viverra dui, at cursus nulla tristique sed."
                     android:textSize="14sp" />
+
             </LinearLayout>
         </ScrollView>
 
-        <ImageView
-            android:id="@+id/divider2"
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="12dp"
-            android:padding="5dp"
-            app:srcCompat="?attr/dividerHorizontal" />
+            android:layout_height="1dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@android:color/black" />
 
         <EditText
             android:id="@+id/itemMessageView"
