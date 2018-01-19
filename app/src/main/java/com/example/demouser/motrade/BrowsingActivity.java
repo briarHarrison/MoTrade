@@ -2,6 +2,7 @@ package com.example.demouser.motrade;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -60,6 +61,14 @@ public class BrowsingActivity extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton addItemButton = (FloatingActionButton) findViewById(R.id.newItemButton);
+
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                createAddItemIntent();
+            }
+        });
+
     }
     // Create the intent for 2nd activity
     public void createIntent(Listing listing) {
@@ -70,4 +79,10 @@ public class BrowsingActivity extends AppCompatActivity {
         intent.putExtra("picture", listing.getMainPicture());
         startActivity(intent);
     }
+
+    public void createAddItemIntent() {
+        Intent intent = new Intent(this, AddItemActivity.class);
+        startActivity(intent);
+    }
+
 }

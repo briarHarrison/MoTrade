@@ -1,5 +1,6 @@
 package com.example.demouser.motrade;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,11 +18,13 @@ public class AddItemActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Intent intent = getIntent();
+
         //get button
-        Button addButton = (Button) findViewById(R.id.addButton);
+        Button postButton = (Button) findViewById(R.id.addButton);
 
         //set button listener
-        addButton.setOnClickListener(new View.OnClickListener() {
+        postButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
             }
