@@ -24,17 +24,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-        <ImageView
-            android:id="@+id/itemIconUploader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:maxHeight="500px"
-            android:maxWidth="500px"
-            android:minHeight="400px"
-            android:minWidth="400px"
-            android:scaleType="centerInside"
-            app:srcCompat="@android:color/holo_green_dark" />
+            <ImageButton
+                android:id="@+id/itemIconUploader"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:backgroundTint="@android:color/holo_green_light"
+                app:srcCompat="@android:drawable/ic_menu_camera" />
 
         <EditText
             android:id="@+id/itemNameInput"
@@ -66,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="SERVICE" />
 
-            <ScrollView
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="81dp">
 
