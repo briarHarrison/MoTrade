@@ -24,73 +24,82 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <ImageView
-                android:id="@+id/itemIconUploader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="25dp"
-                android:maxHeight="500px"
-                android:maxWidth="500px"
-                android:minHeight="400px"
-                android:minWidth="400px"
-                android:scaleType="centerInside"
-                app:srcCompat="@android:color/holo_green_dark" />
+        <ImageView
+            android:id="@+id/itemIconUploader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:maxHeight="500px"
+            android:maxWidth="500px"
+            android:minHeight="400px"
+            android:minWidth="400px"
+            android:scaleType="centerInside"
+            app:srcCompat="@android:color/holo_green_dark" />
 
-            <EditText
-                android:id="@+id/itemNameInput"
+        <EditText
+            android:id="@+id/itemNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:inputType="text"
+            android:hint="Item Name Here"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/itemPriceInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="text"
+            android:hint="Price"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/itemCategoryInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="text"
+            android:hint="Category: Good/Service"
+            android:textSize="18sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="81dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:inputType="text"
-                android:text="Item Name Here"
-                android:textSize="24sp" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/itemPriceInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:inputType="text"
-                android:text="Price"
-                android:textSize="18sp" />
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="81dp">
-
-                <LinearLayout
+                <EditText
+                    android:id="@+id/itemDescriptionInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:padding="10dp"
+                    android:hint="Item description"
+                    android:inputType="text|textMultiLine"
+                    android:minLines="5"
+                    android:textSize="14sp"
+                    />
 
-                    <EditText
-                        android:id="@+id/itemDescriptionInput"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text|textMultiLine"
-                        android:minLines="5"
-                        android:padding="10dp"
-                        android:text="Item description"
-                        android:textSize="14sp" />
+            </LinearLayout>
+        </ScrollView>
 
-                </LinearLayout>
-            </ScrollView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@android:color/black"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:background="@android:color/black" />
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:text="Post" />
 
-            <Button
-                android:id="@+id/addButton"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:padding="10dp"
-                android:text="Post" />
-
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
