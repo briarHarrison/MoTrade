@@ -1,5 +1,6 @@
 package com.example.demouser.motrade;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -37,13 +38,13 @@ public class ItemViewActivity extends AppCompatActivity {
 
         String pictureFile = intent.getStringExtra("picture");
         ImageView image = (ImageView) findViewById(R.id.itemIcon);
-        setPic(pictureFile, image);
+        setPic(this, pictureFile, image);
 
         //String desc = intent.getStringExtra("desc");
 
     }
 
-    public static void setPic(String address, ImageView view) {
+    public static void setPic(Context context, String address, ImageView view) {
         // Get the dimensions of the View
         int targetW = view.getWidth();
         int targetH = view.getHeight();
@@ -68,7 +69,13 @@ public class ItemViewActivity extends AppCompatActivity {
         bmOptions.inSampleSize = scaleFactor;
         bmOptions.inPurgeable = true;
 
-        Bitmap bitmap = BitmapFactory.decodeFile(address, bmOptions);
+        Bitmap bitmap;
+        if (!address.equals("")) {
+            bitmap = BitmapFactory.decodeFile(address, bmOptions);
+        } else {
+            bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.puppy);
+        }
+
         view.setImageBitmap(bitmap);
     }
 }

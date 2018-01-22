@@ -55,7 +55,7 @@ public class ListViewAdapter extends ArrayAdapter<Listing> {
         holder.txtTitle.setText(listing.getName());
         holder.txtPrice.setText(listing.getPrice());
         Log.d("View height", "Height: " + R.dimen.browsing_image_view);
-        ItemViewActivity.setPic(listing.getMainPicture(), holder.imageView);
+        ItemViewActivity.setPic(context, listing.getMainPicture(), holder.imageView);
         //holder.imageView.setImageResource(listing.getMainPicture());
 
         return convertView;

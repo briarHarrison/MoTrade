@@ -34,6 +34,9 @@ public class BrowsingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //String address = "/res/drawable/puppy.jpeg";
+        Listing newListing =  new Listing("name1",  "$1837","description 1", "sellerName 1", Listing.Category.SERVICE, "");
+        catalog.addListing(newListing);
         /*
         // create catalog and add hardcoded entries
         //Catalog catalog = new Catalog();
@@ -45,7 +48,7 @@ public class BrowsingActivity extends AppCompatActivity {
         newListing3.addPicture(R.drawable.puppy, true);
         Listing newListing4 =  new Listing("name4",  "$1837","description 4", "sellerName 4", Listing.Category.SERVICE);
         newListing4.addPicture(R.drawable.puppy, true);
-        catalog.addListing(newListing);
+
         catalog.addListing(newListing2);
         catalog.addListing(newListing3);
         catalog.addListing(newListing4); */
