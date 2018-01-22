@@ -2,6 +2,9 @@ package com.example.demouser.motrade;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -28,22 +31,22 @@ public class BrowsingActivity extends AppCompatActivity {
     protected static ListView listView1;
     protected static ListViewAdapter adapter;
     private static final int SECOND_ACTIVITY_RESULT_CODE = 0;
+    Bitmap puppyBitmap;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Drawable drawable = getResources().getDrawable(R.drawable.puppy);
+        puppyBitmap = ((BitmapDrawable)drawable).getBitmap();
+
         // create catalog and add hardcoded entries
         //Catalog catalog = new Catalog();
-        Listing newListing =  new Listing("name1",  "$1837","description 1", "sellerName 1", Listing.Category.SERVICE);
-        newListing.addPicture(R.drawable.puppy, true);
-        Listing newListing2 =  new Listing("name2",  "$1837","description 2", "sellerName 2", Listing.Category.SERVICE);
-        newListing2.addPicture(R.drawable.puppy, true);
-        Listing newListing3 =  new Listing("name3",  "$1837","description 3", "sellerName 3", Listing.Category.SERVICE);
-        newListing3.addPicture(R.drawable.puppy, true);
-        Listing newListing4 =  new Listing("name4",  "$1837","description 4", "sellerName 4", Listing.Category.SERVICE);
-        newListing4.addPicture(R.drawable.puppy, true);
+        Listing newListing =  new Listing("name1",  "$1837","description 1", "sellerName 1", Listing.Category.SERVICE, puppyBitmap);
+        Listing newListing2 =  new Listing("name2",  "$1837","description 2", "sellerName 2", Listing.Category.SERVICE, puppyBitmap);
+        Listing newListing3 =  new Listing("name3",  "$1837","description 3", "sellerName 3", Listing.Category.SERVICE, puppyBitmap);
+        Listing newListing4 =  new Listing("name4",  "$1837","description 4", "sellerName 4", Listing.Category.SERVICE, puppyBitmap);
         catalog.addListing(newListing);
         catalog.addListing(newListing2);
         catalog.addListing(newListing3);
@@ -107,17 +110,18 @@ public class BrowsingActivity extends AppCompatActivity {
                 String newListingPrice = data.getStringExtra("price");
                 String newListingDesc = data.getStringExtra("desc");
                 String newListingCategory = data.getStringExtra("category");
+                Bitmap imageBitMap = data.getParcelableExtra("image");
 
                 // update and display the catalog
                 Listing newListing;
                 if (newListingCategory.toLowerCase().equals("good")) {
-                    newListing = new Listing(newListingName, newListingPrice, newListingDesc, "", Listing.Category.GOOD);
+                    newListing = new Listing(newListingName, newListingPrice, newListingDesc, "", Listing.Category.GOOD, imageBitMap);
                 }
                 else {
-                    newListing = new Listing(newListingName, newListingPrice, newListingDesc, "", Listing.Category.SERVICE);
+                    newListing = new Listing(newListingName, newListingPrice, newListingDesc, "", Listing.Category.SERVICE, imageBitMap);
                 }
 
-                newListing.addPicture(R.drawable.puppy, true);
+                newListing.addPicture(puppyBitmap, true);
                 catalog.addListing(newListing);
                 //Log.d("Catalog", "listings:" + catalog.getMasterList().toString());
                 adapter.notifyDataSetChanged();

@@ -22,6 +22,7 @@ public class AddItemActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageButton picture;
+    Bitmap imageBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class AddItemActivity extends AppCompatActivity {
                 returnIntent.putExtra("price", price.getText().toString());
                 returnIntent.putExtra("desc", description.getText().toString());
                 returnIntent.putExtra("category", category);
+                returnIntent.putExtra("image", imageBitmap);
                 setResult(Activity.RESULT_OK, returnIntent);
                 finish();
             }
@@ -91,7 +93,7 @@ public class AddItemActivity extends AppCompatActivity {
         Log.d("Camera", "Returning from picture");
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageBitmap = (Bitmap) extras.get("data");
             picture.setImageBitmap(imageBitmap);
         }
     }

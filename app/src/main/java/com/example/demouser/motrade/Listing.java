@@ -1,5 +1,7 @@
 package com.example.demouser.motrade;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
 
 /**
@@ -11,7 +13,7 @@ public class Listing {
     protected String name;
     protected String price;
     protected String description;
-    protected ArrayList<Integer> pictureFiles;
+    protected ArrayList<String> pictureFiles;
     protected String sellerName;
     protected Category category;
 
@@ -19,13 +21,14 @@ public class Listing {
         GOOD, SERVICE;
     }
 
-    public Listing(String name, String price, String description, String sellerName, Category category) {
+    public Listing(String name, String price, String description, String sellerName, Category category, String image) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.sellerName = sellerName;
         this.category = category;
         pictureFiles = new ArrayList<>();
+        pictureFiles.add(image);
     }
 
     public String getName() {
@@ -52,24 +55,24 @@ public class Listing {
         this.description = description;
     }
 
-    public int getMainPicture() {
+    public String getMainPicture() {
         return pictureFiles.get(0);
     }
 
-    public ArrayList<Integer> getPictureFiles() {
+    public ArrayList<String> getPictureFiles() {
         return pictureFiles;
     }
 
-    public void setPictureFiles(ArrayList<Integer> pictureFiles) {
+    public void setPictureFiles(ArrayList<String> pictureFiles) {
         this.pictureFiles = pictureFiles;
     }
 
     /**
      * Inserts the picture into the pictures list
-     * @param pictureFile the string address of the image
+     * @param pictureFile Bitmap image
      * @param makeFirst if true, insert at front of list, otherwise insert at end
      */
-    public void addPicture(int pictureFile, boolean makeFirst) {
+    public void addPicture(String pictureFile, boolean makeFirst) {
         if (makeFirst) {
             pictureFiles.add(0, pictureFile);
         } else {
@@ -133,7 +136,7 @@ public class Listing {
         result = 31 * result + (category != null ? category.hashCode() : 0);
         return result;
     }
-
+    /*
     public static void main(String[] args) {
 
         Listing testListing = new Listing("bagel", "$1837",
@@ -148,5 +151,5 @@ public class Listing {
                 Category.GOOD);
 
         System.out.println(testListing.equals(testListing2));
-    }
+    } */
 }

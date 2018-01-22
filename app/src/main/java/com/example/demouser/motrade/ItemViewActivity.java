@@ -1,6 +1,7 @@
 package com.example.demouser.motrade;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -33,9 +34,9 @@ public class ItemViewActivity extends AppCompatActivity {
         TextView textPrice = (TextView) findViewById(R.id.itemPriceView);
         textPrice.setText(price);
 
-        Integer pictureFile = intent.getIntExtra("picture", 0);
+        Bitmap pictureFile = intent.getParcelableExtra("picture");
         ImageView image = (ImageView) findViewById(R.id.itemIcon);
-        image.setImageResource(pictureFile);
+        image.setImageBitmap(pictureFile);
 
 
 

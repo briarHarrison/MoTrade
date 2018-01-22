@@ -53,7 +53,7 @@ public class ListViewAdapter extends ArrayAdapter<Listing> {
         holder.txtDesc.setText(listing.getDescription());
         holder.txtTitle.setText(listing.getName());
         holder.txtPrice.setText(listing.getPrice());
-        holder.imageView.setImageResource(listing.getMainPicture());
+        holder.imageView.setImageBitmap(listing.getMainPicture());
 
         return convertView;
     }
