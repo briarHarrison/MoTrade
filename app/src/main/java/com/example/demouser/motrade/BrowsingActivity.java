@@ -116,9 +116,11 @@ public class BrowsingActivity extends AppCompatActivity {
                 else {
                     newListing = new Listing(newListingName, newListingPrice, newListingDesc, "", Listing.Category.SERVICE);
                 }
-                catalog.addListing(newListing);
 
-                Log.d("Catalog", catalog.toString());
+                newListing.addPicture(R.drawable.puppy, true);
+                catalog.addListing(newListing);
+                adapter.notifyDataSetChanged();
+
             }
         }
     }
