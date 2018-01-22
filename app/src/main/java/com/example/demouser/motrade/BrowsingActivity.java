@@ -9,11 +9,13 @@ import android.util.Log;
 import android.view.View;
 
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import android.widget.ArrayAdapter;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,47 +27,87 @@ import java.util.ArrayList;
 public class BrowsingActivity extends AppCompatActivity {
 
     protected static Catalog catalog = new Catalog();
-    protected static ListView listView1;
-    protected static ListViewAdapter adapter;
+    protected static ListView listView3, listView2, listView1;
+    protected static LinearLayout tab1, tab2, tab3;
+    protected TabHost host;
+    protected static ListViewAdapter adapter1, adapter2, adapter3;
     private static final int SECOND_ACTIVITY_RESULT_CODE = 0;
+    private String puppyString;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
+        puppyString = "drawable://" + R.drawable.puppy;
+
         // create catalog and add hardcoded entries
         //Catalog catalog = new Catalog();
-        Listing newListing =  new Listing("name1",  "$1837","description 1", "sellerName 1", Listing.Category.SERVICE);
-        newListing.addPicture(R.drawable.puppy, true);
-        Listing newListing2 =  new Listing("name2",  "$1837","description 2", "sellerName 2", Listing.Category.SERVICE);
-        newListing2.addPicture(R.drawable.puppy, true);
-        Listing newListing3 =  new Listing("name3",  "$1837","description 3", "sellerName 3", Listing.Category.SERVICE);
-        newListing3.addPicture(R.drawable.puppy, true);
-        Listing newListing4 =  new Listing("name4",  "$1837","description 4", "sellerName 4", Listing.Category.SERVICE);
-        newListing4.addPicture(R.drawable.puppy, true);
+        Listing newListing =  new Listing("name1",  "$1837","description 1", "sellerName 1", Listing.Category.GOOD, puppyString);
+        Listing newListing2 =  new Listing("name2",  "$1837","description 2", "sellerName 2", Listing.Category.SERVICE, puppyString);
+        Listing newListing3 =  new Listing("name3",  "$1837","description 3", "sellerName 3", Listing.Category.SERVICE, puppyString);
+        Listing newListing4 =  new Listing("name4",  "$1837","description 4", "sellerName 4", Listing.Category.GOOD, puppyString);
         catalog.addListing(newListing);
         catalog.addListing(newListing2);
         catalog.addListing(newListing3);
-        catalog.addListing(newListing4); */
+        catalog.addListing(newListing4);
+
+        // make tab host and three tabs
+        host = (TabHost)findViewById(R.id.tabHost);
+        host.setup();
+        TabHost.TabSpec spec = host.newTabSpec("All items");
+        spec.setContent(R.id.tab1);
+        spec.setIndicator("All items");
+        host.addTab(spec);
+        spec = host.newTabSpec("Goods");
+        spec.setContent(R.id.tab2);
+        spec.setIndicator("Goods");
+        host.addTab(spec);
+        spec = host.newTabSpec("Service");
+        spec.setContent(R.id.tab3);
+        spec.setIndicator("Service");
+        host.addTab(spec);
 
         //make listview
         listView1 = (ListView) findViewById(R.id.listView1);
+        listView2 = (ListView) findViewById(R.id.listView2);
+        listView3 = (ListView) findViewById(R.id.listView3);
 
         //get list from catalog
         ArrayList<Listing> items = catalog.getMasterList();
+        ArrayList<Listing> goodItems = catalog.getCategory(Listing.Category.GOOD);
+        ArrayList<Listing> serviceItems = catalog.getCategory(Listing.Category.SERVICE);
 
         //make adapter, passing in list from catlog
-        adapter = new ListViewAdapter(this, R.layout.list_item, items);
+        adapter1 = new ListViewAdapter(this, R.layout.list_item, items);
+        adapter2 = new ListViewAdapter(this, R.layout.list_item, goodItems);
+        adapter3 = new ListViewAdapter(this, R.layout.list_item, serviceItems);
 
         //set listView's adapter
-        listView1.setAdapter(adapter);
+        listView1.setAdapter(adapter1);
+        listView2.setAdapter(adapter2);
+        listView3.setAdapter(adapter3);
 
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Listing itemValue = (Listing) listView1.getItemAtPosition(position);
+                createIntent(itemValue);
+            }
+        });
+
+        listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Listing itemValue = (Listing) listView2.getItemAtPosition(position);
+                createIntent(itemValue);
+            }
+        });
+
+        listView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Listing itemValue = (Listing) listView3.getItemAtPosition(position);
                 createIntent(itemValue);
             }
         });
@@ -119,11 +161,10 @@ public class BrowsingActivity extends AppCompatActivity {
                     newListing = new Listing(newListingName, newListingPrice, newListingDesc, "", Listing.Category.SERVICE, newListingImageAdress);
                 }
 
-                //newListing.addPicture(R.drawable.puppy, true);
                 catalog.addListing(newListing);
-                //Log.d("Catalog", "listings:" + catalog.getMasterList().toString());
-                adapter.notifyDataSetChanged();
-
+                adapter1.notifyDataSetChanged();
+                adapter2.notifyDataSetChanged();
+                adapter3.notifyDataSetChanged();
             }
         }
     }
