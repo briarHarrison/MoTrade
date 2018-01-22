@@ -70,10 +70,29 @@ public class ItemViewActivity extends AppCompatActivity {
         bmOptions.inPurgeable = true;
 
         Bitmap bitmap;
-        if (!address.equals("")) {
+        if (!address.contains("hardcode:")) {
             bitmap = BitmapFactory.decodeFile(address, bmOptions);
         } else {
-            bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.puppy);
+            if(address.contains("almonds")) {
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.almonds);
+            }
+            else if(address.contains("briar")) {
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.briar);
+            }
+            else if(address.contains("can")) {
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.coke);
+            }
+            else if(address.contains("jocelyn")) {
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.jocelyn);
+            }
+            else if(address.contains("cocoa")) {
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.nada);
+            }
+            else {
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.puppy);
+            }
+
+
         }
 
         view.setImageBitmap(bitmap);

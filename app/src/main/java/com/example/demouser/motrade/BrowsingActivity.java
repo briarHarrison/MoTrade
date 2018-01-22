@@ -39,19 +39,16 @@ public class BrowsingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //String address = "/res/drawable/puppy.jpeg";
-        Listing newListing =  new Listing("name1",  "$1837","description 1", "sellerName 1", Listing.Category.SERVICE, "");
-        catalog.addListing(newListing);
-        /*
-        // create catalog and add hardcoded entries
-        //Catalog catalog = new Catalog();
-        Listing newListing =  new Listing("name1",  "$1837","description 1", "sellerName 1", Listing.Category.GOOD, puppyString);
-        Listing newListing2 =  new Listing("name2",  "$1837","description 2", "sellerName 2", Listing.Category.SERVICE, puppyString);
-        Listing newListing3 =  new Listing("name3",  "$1837","description 3", "sellerName 3", Listing.Category.SERVICE, puppyString);
-        Listing newListing4 =  new Listing("name4",  "$1837","description 4", "sellerName 4", Listing.Category.GOOD, puppyString);
-        catalog.addListing(newListing);
-        catalog.addListing(newListing2);
-        catalog.addListing(newListing3);
-        catalog.addListing(newListing4);
+        Listing almondListing =  new Listing("Empty Almond Package",  "$50","Vintage 11:00 AM Janruary 2018. Airation improves almond taste and quality. Well worth the price!", "Alice", Listing.Category.GOOD, "hardcode: almonds");
+        catalog.addListing(almondListing);
+        Listing orangeListing =  new Listing("Orange Peeling",  "Free","Do you have difficulty peeling tiny oranges? I can help!", "Briar", Listing.Category.SERVICE, "hardcode: orange");
+        catalog.addListing(orangeListing);
+        Listing canListing =  new Listing("Secret Keeper",  "Free","Shiny, makes fun noises. Perfect for hiding a super secret message and floating down a river.", "Sofia", Listing.Category.GOOD, "hardcode: can");
+        catalog.addListing(canListing);
+        Listing codingListing =  new Listing("Programming Lessons",  "$300/hr","Come learn to code with the best instructor in the world.", "Jocelyn", Listing.Category.SERVICE, "hardcode: jocelyn");
+        catalog.addListing(codingListing);
+        Listing cocoaListing =  new Listing("Hot Cocoa",  "$3000.99","Hot and sweet, just like the seller.", "Nada", Listing.Category.GOOD, "hardcode: cocoa");
+        catalog.addListing(cocoaListing);
 
         // make tab host and three tabs
         host = (TabHost)findViewById(R.id.tabHost);
