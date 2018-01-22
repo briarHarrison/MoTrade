@@ -8,85 +8,89 @@
     tools:context="com.example.demouser.motrade.AddItemActivity"
     tools:showIn="@layout/activity_add_item">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="top|center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/itemIconUploader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:maxHeight="500px"
-            android:maxWidth="500px"
-            android:minHeight="400px"
-            android:minWidth="400px"
-            android:scaleType="centerInside"
-            app:srcCompat="@android:color/holo_green_dark" />
-
-        <EditText
-            android:id="@+id/itemNameInput"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:inputType="text"
-            android:text="Item Name Here"
-            android:textSize="24sp" />
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-        <EditText
-            android:id="@+id/itemPriceInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:inputType="text"
-            android:text="Price"
-            android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/itemIconUploader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:maxHeight="500px"
+                android:maxWidth="500px"
+                android:minHeight="400px"
+                android:minWidth="400px"
+                android:scaleType="centerInside"
+                app:srcCompat="@android:color/holo_green_dark" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="81dp">
-
-            <LinearLayout
+            <EditText
+                android:id="@+id/itemNameInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center_horizontal"
+                android:inputType="text"
+                android:text="Item Name Here"
+                android:textSize="24sp" />
 
-                <EditText
-                    android:id="@+id/itemDescriptionInput"
+            <EditText
+                android:id="@+id/itemPriceInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="text"
+                android:text="Price"
+                android:textSize="18sp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="81dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="Item description"
-                    android:inputType="text|textMultiLine"
-                    android:minLines="5"
-                    android:textSize="14sp"
-                    />
+                    android:orientation="vertical">
 
-            </LinearLayout>
-        </ScrollView>
+                    <EditText
+                        android:id="@+id/itemDescriptionInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text|textMultiLine"
+                        android:minLines="5"
+                        android:padding="10dp"
+                        android:text="Item description"
+                        android:textSize="14sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:background="@android:color/black"/>
+                </LinearLayout>
+            </ScrollView>
 
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:padding="10dp"
-            android:text="Post" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:background="@android:color/black" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:text="Post" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
