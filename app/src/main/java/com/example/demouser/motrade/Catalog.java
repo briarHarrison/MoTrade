@@ -17,6 +17,13 @@ public class Catalog {
         categoryMap = new HashMap<>();
     }
 
+    @Override
+    public String toString() {
+        return "Catalog{" +
+                "masterList=" + masterList.toString() +
+                '}';
+    }
+
     /**
      * create a new listing and add to list
      * @param newListing
