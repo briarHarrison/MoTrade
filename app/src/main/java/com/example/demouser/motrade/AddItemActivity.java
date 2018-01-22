@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 public class AddItemActivity extends AppCompatActivity {
@@ -31,14 +32,22 @@ public class AddItemActivity extends AppCompatActivity {
                 EditText name = (EditText) findViewById(R.id.itemNameInput);
                 EditText price = (EditText) findViewById(R.id.itemPriceInput);
                 EditText description = (EditText) findViewById(R.id.itemDescriptionInput);
-                EditText category = (EditText) findViewById(R.id.itemCategoryInput);
+                CheckBox good = (CheckBox) findViewById(R.id.good);
+                CheckBox service = (CheckBox) findViewById(R.id.service);
+                String category;
+                if (good.isChecked()) {
+                    category = "GOOD";
+                }
+                else {
+                    category = "SERVICE";
+                }
 
                 // put the String to pass back into an Intent and close this activity
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("name", name.getText().toString());
                 returnIntent.putExtra("price", price.getText().toString());
                 returnIntent.putExtra("desc", description.getText().toString());
-                returnIntent.putExtra("category", category.getText().toString());
+                returnIntent.putExtra("category", category);
                 setResult(Activity.RESULT_OK, returnIntent);
                 finish();
             }

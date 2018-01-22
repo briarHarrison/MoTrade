@@ -119,6 +119,7 @@ public class BrowsingActivity extends AppCompatActivity {
 
                 newListing.addPicture(R.drawable.puppy, true);
                 catalog.addListing(newListing);
+                //Log.d("Catalog", "listings:" + catalog.getMasterList().toString());
                 adapter.notifyDataSetChanged();
 
             }
