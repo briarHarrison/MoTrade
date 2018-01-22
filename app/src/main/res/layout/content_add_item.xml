@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:inputType="text"
-                android:text="Item Name Here"
+                android:hint="Item Name Here"
                 android:textSize="24sp" />
 
             <EditText
@@ -46,7 +46,16 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="text"
-                android:text="Price"
+                android:hint="Price"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/itemCategoryInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="text"
+                android:hint="Category: Good/Service"
                 android:textSize="18sp" />
 
             <ScrollView
@@ -65,7 +74,7 @@
                         android:inputType="text|textMultiLine"
                         android:minLines="5"
                         android:padding="10dp"
-                        android:text="Item description"
+                        android:hint="Item description"
                         android:textSize="14sp" />
 
                 </LinearLayout>

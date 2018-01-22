@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -32,8 +33,12 @@ public class AddItemActivity extends AppCompatActivity {
 
         //get button
         Button postButton = (Button) findViewById(R.id.addButton);
+        ImageButton pictureButton = findViewById(R.id.itemIconUploader);
 
-        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+        if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+            picture = findViewById(R.id.itemIconUploader);
+            picture.setEnabled(true);
+        } else {
             picture = findViewById(R.id.itemIconUploader);
             picture.setEnabled(false);
         }
@@ -56,6 +61,13 @@ public class AddItemActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        pictureButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Log.d("Camera", "Taking a picture");
+                dispatchTakePictureIntent();
+            }
+        });
     }
 
     private void dispatchTakePictureIntent() {
@@ -67,6 +79,7 @@ public class AddItemActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("Camera", "Returning from picture");
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
