@@ -2,6 +2,7 @@ package com.example.demouser.motrade;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,9 @@ public class ListViewAdapter extends ArrayAdapter<Listing> {
         holder.txtDesc.setText(listing.getDescription());
         holder.txtTitle.setText(listing.getName());
         holder.txtPrice.setText(listing.getPrice());
-        holder.imageView.setImageResource(listing.getMainPicture());
+        Log.d("View height", "Height: " + R.dimen.browsing_image_view);
+        ItemViewActivity.setPic(listing.getMainPicture(), holder.imageView);
+        //holder.imageView.setImageResource(listing.getMainPicture());
 
         return convertView;
     }

@@ -77,6 +77,7 @@ public class AddItemActivity extends AppCompatActivity {
                 returnIntent.putExtra("price", price.getText().toString());
                 returnIntent.putExtra("desc", description.getText().toString());
                 returnIntent.putExtra("category", category);
+                returnIntent.putExtra("image", mCurrentPhotoPath);
                 setResult(Activity.RESULT_OK, returnIntent);
                 finish();
             }

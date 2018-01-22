@@ -11,7 +11,7 @@ public class Listing {
     protected String name;
     protected String price;
     protected String description;
-    protected ArrayList<Integer> pictureFiles;
+    protected ArrayList<String> pictureFiles;
     protected String sellerName;
     protected Category category;
 
@@ -19,13 +19,14 @@ public class Listing {
         GOOD, SERVICE;
     }
 
-    public Listing(String name, String price, String description, String sellerName, Category category) {
+    public Listing(String name, String price, String description, String sellerName, Category category, String image) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.sellerName = sellerName;
         this.category = category;
         pictureFiles = new ArrayList<>();
+        pictureFiles.add(image);
     }
 
     public String getName() {
@@ -52,15 +53,15 @@ public class Listing {
         this.description = description;
     }
 
-    public int getMainPicture() {
+    public String getMainPicture() {
         return pictureFiles.get(0);
     }
 
-    public ArrayList<Integer> getPictureFiles() {
+    public ArrayList<String> getPictureFiles() {
         return pictureFiles;
     }
 
-    public void setPictureFiles(ArrayList<Integer> pictureFiles) {
+    public void setPictureFiles(ArrayList<String> pictureFiles) {
         this.pictureFiles = pictureFiles;
     }
 
@@ -69,7 +70,7 @@ public class Listing {
      * @param pictureFile the string address of the image
      * @param makeFirst if true, insert at front of list, otherwise insert at end
      */
-    public void addPicture(int pictureFile, boolean makeFirst) {
+    public void addPicture(String pictureFile, boolean makeFirst) {
         if (makeFirst) {
             pictureFiles.add(0, pictureFile);
         } else {
@@ -134,6 +135,7 @@ public class Listing {
         return result;
     }
 
+    /*
     public static void main(String[] args) {
 
         Listing testListing = new Listing("bagel", "$1837",
@@ -148,5 +150,5 @@ public class Listing {
                 Category.GOOD);
 
         System.out.println(testListing.equals(testListing2));
-    }
+    }*/
 }

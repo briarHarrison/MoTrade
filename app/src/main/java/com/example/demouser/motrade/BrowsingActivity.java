@@ -34,6 +34,7 @@ public class BrowsingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
         // create catalog and add hardcoded entries
         //Catalog catalog = new Catalog();
         Listing newListing =  new Listing("name1",  "$1837","description 1", "sellerName 1", Listing.Category.SERVICE);
@@ -47,7 +48,7 @@ public class BrowsingActivity extends AppCompatActivity {
         catalog.addListing(newListing);
         catalog.addListing(newListing2);
         catalog.addListing(newListing3);
-        catalog.addListing(newListing4);
+        catalog.addListing(newListing4); */
 
         //make listview
         listView1 = (ListView) findViewById(R.id.listView1);
@@ -107,17 +108,18 @@ public class BrowsingActivity extends AppCompatActivity {
                 String newListingPrice = data.getStringExtra("price");
                 String newListingDesc = data.getStringExtra("desc");
                 String newListingCategory = data.getStringExtra("category");
+                String newListingImageAdress = data.getStringExtra("image");
 
                 // update and display the catalog
                 Listing newListing;
                 if (newListingCategory.toLowerCase().equals("good")) {
-                    newListing = new Listing(newListingName, newListingPrice, newListingDesc, "", Listing.Category.GOOD);
+                    newListing = new Listing(newListingName, newListingPrice, newListingDesc, "", Listing.Category.GOOD, newListingImageAdress);
                 }
                 else {
-                    newListing = new Listing(newListingName, newListingPrice, newListingDesc, "", Listing.Category.SERVICE);
+                    newListing = new Listing(newListingName, newListingPrice, newListingDesc, "", Listing.Category.SERVICE, newListingImageAdress);
                 }
 
-                newListing.addPicture(R.drawable.puppy, true);
+                //newListing.addPicture(R.drawable.puppy, true);
                 catalog.addListing(newListing);
                 //Log.d("Catalog", "listings:" + catalog.getMasterList().toString());
                 adapter.notifyDataSetChanged();

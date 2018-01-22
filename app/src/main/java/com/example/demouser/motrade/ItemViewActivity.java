@@ -1,6 +1,8 @@
 package com.example.demouser.motrade;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -33,13 +35,40 @@ public class ItemViewActivity extends AppCompatActivity {
         TextView textPrice = (TextView) findViewById(R.id.itemPriceView);
         textPrice.setText(price);
 
-        Integer pictureFile = intent.getIntExtra("picture", 0);
+        String pictureFile = intent.getStringExtra("picture");
         ImageView image = (ImageView) findViewById(R.id.itemIcon);
-        image.setImageResource(pictureFile);
-
-
+        setPic(pictureFile, image);
 
         //String desc = intent.getStringExtra("desc");
 
+    }
+
+    public static void setPic(String address, ImageView view) {
+        // Get the dimensions of the View
+        int targetW = view.getWidth();
+        int targetH = view.getHeight();
+
+        if(targetH == 0 || targetW == 0) {
+            targetH = R.dimen.browsing_image_view;
+            targetW = R.dimen.browsing_image_view;
+        }
+
+        // Get the dimensions of the bitmap
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        bmOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(address, bmOptions);
+        int photoW = bmOptions.outWidth;
+        int photoH = bmOptions.outHeight;
+
+        // Determine how much to scale down the image
+        int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
+
+        // Decode the image file into a Bitmap sized to fill the View
+        bmOptions.inJustDecodeBounds = false;
+        bmOptions.inSampleSize = scaleFactor;
+        bmOptions.inPurgeable = true;
+
+        Bitmap bitmap = BitmapFactory.decodeFile(address, bmOptions);
+        view.setImageBitmap(bitmap);
     }
 }
